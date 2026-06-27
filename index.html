@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan Lima | Software Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#00f2ff", // Cyan
+                    "secondary": "#ff00e5", // Magenta
+                    "background": "#05060f",
+                    "surface": "#0d0f1a",
+                    "on-surface": "#e1e2ec",
+                    "on-surface-variant": "#94a3b8",
+                    "outline": "#ffffff15",
+                    "primary-container": "#00f2ff20",
+                    "secondary-container": "#ff00e520",
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "160px",
+                    "margin-lg": "80px",
+                    "gutter": "32px",
+                    "margin-sm": "16px",
+                    "unit": "4px",
+                    "container-max": "1280px",
+                    "margin-md": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "code": ["JetBrains Mono"],
+                    "display-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.7", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.7", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-xl": ["96px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #05060f;
+            color: #e1e2ec;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-card {
+            background: rgba(13, 15, 26, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(0, 242, 255, 0.2);
+        }
+
+        .premium-gradient-text {
+            background: linear-gradient(135deg, #00f2ff 0%, #ff00e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vibrant-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, #00f2ff, #ff00e5);
+            transition: all 0.3s ease;
+        }
+
+        .vibrant-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 242, 255, 0.5);
+        }
+
+        .vibrant-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #ff00e5, #00f2ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .vibrant-btn:hover::after {
+            opacity: 1;
+        }
+
+        .vibrant-btn span {
+            position: relative;
+            z-index: 10;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link-active {
+            color: #00f2ff;
+        }
+
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #00f2ff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05060f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f2ff;
+        }
+
+        .hero-glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased">
+<!-- Shader Background -->
+<div class="fixed inset-0 z-[-2] overflow-hidden pointer-events-none opacity-50">
+
+</div>
+<!-- Decorative Elements -->
+<div class="hero-glow-orb top-[-10%] left-[-10%]"></div>
+<div class="hero-glow-orb bottom-[-10%] right-[-10%] opacity-20" style="background: radial-gradient(circle, rgba(255, 0, 229, 0.15) 0%, transparent 70%);"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-background/50 backdrop-blur-2xl">
+<div class="flex justify-between items-center px-gutter py-6 max-w-container-max mx-auto">
+<div class="font-display-lg text-2xl font-bold tracking-tighter text-white">
+            RYAN<span class="text-primary">.</span>LIMA
+        </div>
+<div class="hidden md:flex items-center gap-10 font-label-md uppercase text-xs tracking-[0.2em]">
+<a class="relative text-primary transition-colors nav-link-active" href="#home">Home</a>
+<a class="relative text-on-surface-variant hover:text-white transition-colors" href="#projects">Projects</a>
+<a class="relative text-on-surface-variant hover:text-white transition-colors" href="#experience">Experience</a>
+<a class="relative text-on-surface-variant hover:text-white transition-colors" href="#skills">Skills</a>
+<a class="relative text-on-surface-variant hover:text-white transition-colors" href="#contact">Contact</a>
+</div>
+<button class="vibrant-btn px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-black">
+<span>Hire Me</span>
+</button>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-gutter pt-32">
+<!-- Hero Section -->
+<section class="min-h-[90vh] flex flex-col justify-center items-center text-center reveal" id="home">
+<div class="relative mb-margin-md group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur-xl opacity-30 group-hover:opacity-60 transition duration-700"></div>
+<img class="w-56 h-56 rounded-full object-cover border-[6px] border-surface relative z-10" data-alt="Ryan Lima professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRKkCMbhu-PG17319nVjVTXDEzrOAkTtZL6vabVNMQXwlxHHOun-qV7KuEcgClPfu3Z3nkv-WP8i1b5Hwy-xWwSpliROaC-W77g_nioEeBuNkEixYMgRcYWO1u7AhoJxWIJ0dGJJ8GHgjqIGPkMFAji1dFZih4s4vBOvfCnaGojkYM2sGaKYlIhUnyJwDKrTuHvBE7SaqARQ8klknsQmpse8znxMAfiDU3og-IMpx7SUgQFV885VsEnNcSOs1AvmsEqSBjB48YFrs"/>
+</div>
+<div class="space-y-6">
+<p class="font-label-md text-primary tracking-[0.3em] uppercase text-sm mb-4">Full Stack Developer &amp; UI Specialist</p>
+<h1 class="font-display-xl text-display-xl tracking-tight text-white max-w-4xl">
+                Elevando o <span class="premium-gradient-text">Desenvolvimento</span> ao nível de arte.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto opacity-80 leading-relaxed">
+                Olá, eu sou <b>Ryan Lima</b>. Transformo problemas complexos em experiências digitais impecáveis, unindo engenharia de software e design de alta performance.
+            </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-6 mt-12">
+<a class="vibrant-btn px-10 py-5 rounded-2xl font-bold flex items-center gap-3 text-black" href="#projects">
+<span><span class="material-symbols-outlined align-middle mr-1">rocket_launch</span> Ver Projetos</span>
+</a>
+<a class="glass-card text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 border-white/10 hover:border-white/30" href="#contact">
+<span class="material-symbols-outlined">mail</span> Contato
+            </a>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-section-gap reveal">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="glass-card p-10 rounded-3xl text-center group">
+<div class="premium-gradient-text font-display-xl text-6xl mb-2 font-bold group-hover:scale-110 transition-transform">15+</div>
+<div class="font-label-md text-xs uppercase tracking-widest text-on-surface-variant">Projetos Ativos</div>
+</div>
+<div class="glass-card p-10 rounded-3xl text-center group">
+<div class="premium-gradient-text font-display-xl text-6xl mb-2 font-bold group-hover:scale-110 transition-transform">12</div>
+<div class="font-label-md text-xs uppercase tracking-widest text-on-surface-variant">Tech Stacks</div>
+</div>
+<div class="glass-card p-10 rounded-3xl text-center group">
+<div class="premium-gradient-text font-display-xl text-6xl mb-2 font-bold group-hover:scale-110 transition-transform">2.5k</div>
+<div class="font-label-md text-xs uppercase tracking-widest text-on-surface-variant">Foco em Code</div>
+</div>
+<div class="glass-card p-10 rounded-3xl text-center group">
+<div class="premium-gradient-text font-display-xl text-6xl mb-2 font-bold group-hover:scale-110 transition-transform">20+</div>
+<div class="font-label-md text-xs uppercase tracking-widest text-on-surface-variant">Conquistas</div>
+</div>
+</div>
+</section>
+<!-- About Me -->
+<section class="py-section-gap reveal" id="about">
+<div class="grid lg:grid-cols-2 gap-24 items-center">
+<div>
+<p class="font-label-md text-secondary tracking-[0.3em] uppercase text-xs mb-6">Sobre Ryan Lima</p>
+<h2 class="font-headline-lg text-display-lg mb-margin-md text-white leading-tight">Engenharia de Software com Propósito &amp; <span class="premium-gradient-text">Refinamento Visual</span>.</h2>
+<div class="space-y-6">
+<p class="font-body-lg text-on-surface-variant leading-relaxed">
+                        Iniciei minha jornada fascinado pela interseção entre lógica e estética. Hoje, como aluno de excelência do SENAI, aplico rigor técnico para construir soluções escaláveis.
+                    </p>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">
+                        Acredito que cada pixel deve servir a um propósito e cada linha de código deve buscar a máxima eficiência. Não apenas codifico, projeto experiências.
+                    </p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="glass-card p-8 rounded-3xl flex items-center gap-8 group">
+<div class="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-white mb-1">Foco em Performance</h4>
+<p class="text-on-surface-variant text-sm">Otimização de ponta a ponta e latência zero.</p>
+</div>
+</div>
+<div class="glass-card p-8 rounded-3xl flex items-center gap-8 group">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-3xl">palette</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-white mb-1">Design de Elite</h4>
+<p class="text-on-surface-variant text-sm">Interfaces minimalistas e fluidas para o usuário moderno.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-section-gap reveal" id="skills">
+<div class="flex items-center gap-8 mb-16">
+<h2 class="font-headline-lg text-headline-lg text-white whitespace-nowrap">Stacks <span class="text-primary">&amp;</span> Arsenal</h2>
+<div class="h-[1px] flex-1 bg-white/10"></div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+<!-- Skill Cards -->
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">html</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">HTML5</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">css</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">CSS3</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">javascript</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">JS (ES6+)</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">code</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">Python</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">coffee</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">Java</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">database</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">SQL</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">hub</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">GitHub</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">draw</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">Figma</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">memory</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">Arduino</span>
+</div>
+<div class="glass-card p-10 rounded-3xl flex flex-col items-center justify-center gap-4 group border-white/5">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-all duration-500 transform group-hover:scale-110">layers</span>
+<span class="font-label-md text-xs uppercase tracking-widest opacity-60">React</span>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-section-gap reveal" id="projects">
+<div class="flex flex-col items-center mb-16">
+<p class="font-label-md text-primary tracking-[0.3em] uppercase text-xs mb-4">Portfolio Selecionado</p>
+<h2 class="font-headline-lg text-headline-lg text-white">Projetos de Alto Impacto</h2>
+</div>
+<div class="grid lg:grid-cols-2 gap-12">
+<!-- Project 1 -->
+<div class="glass-card rounded-[2.5rem] overflow-hidden group">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="Nexus SaaS Platform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkzA3jtbmBUoU01c93l2JJvHDF5EUsGIracwT4jm_ph6j-jLVDF9DzGW_nq2id0oQYIYiVQUzHAZQLhcWr6UCVrU-_IT7zAv6kV-8h5xmYmH51Xm6slNaN29viaBUVtamZVCf4zupSa249AZRdLW3CJyA3Cj6428Q9UNXfKMyEc_UqxN_sGPy8wkxS39LvDVRcG6jEGMmN9SuMUbBq2Hlr9E2R5AHKue2Vk4sm-2I47rLte7qUkCYTzPfXpSGfWj4oXbf14G1Pu1g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 flex gap-3">
+<span class="bg-white/10 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/20">React</span>
+<span class="bg-white/10 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/20">Node.js</span>
+</div>
+</div>
+<div class="p-10">
+<h3 class="font-display-lg text-3xl mb-4 text-white">Plataforma Nexus</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Sistema completo de monitoramento em tempo real com integração via WebSocket e visualização de dados 3D para alta performance industrial.</p>
+<div class="flex gap-8">
+<a class="flex items-center gap-2 text-primary hover:text-white transition-colors font-bold group/link" href="#">
+<span class="material-symbols-outlined text-xl group-hover/link:translate-x-1 transition-transform">link</span> Live Demo
+                        </a>
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">code</span> Source
+                        </a>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="glass-card rounded-[2.5rem] overflow-hidden group">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="HypeKeys E-commerce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgNiMTDTSzF94nNiyEAat9deE1INJ52XkWGREJkDy7-HIVG6ouUxTBNn7Ft-AX3urCDr36W-cAHM4ynjzuw5jNl88BG6djS5bnlqG7IPImA1kK6keLB1QOVLkM3KM-3Y7bkWRdxHQaICa_Tf6xEvtYZcSHdnjrqxp-tQUSA9MYLvBdBVKrFwfnU0vzvzGXZRgkWU8xLd5m6LgGUKwhF8iATEP5x0pROtKaBfSPAo81Ttrdfb4wqojJEDHfSY_BNJj6fLmyOgZy1-o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 flex gap-3">
+<span class="bg-white/10 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/20">TypeScript</span>
+<span class="bg-white/10 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/20">Tailwind</span>
+</div>
+</div>
+<div class="p-10">
+<h3 class="font-display-lg text-3xl mb-4 text-white">HypeKeys Store</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">E-commerce premium focado em transições suaves, motion design e uma experiência de compra ultra-fluida para produtos High-End.</p>
+<div class="flex gap-8">
+<a class="flex items-center gap-2 text-primary hover:text-white transition-colors font-bold group/link" href="#">
+<span class="material-symbols-outlined text-xl group-hover/link:translate-x-1 transition-transform">link</span> Live Demo
+                        </a>
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">code</span> Source
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Timeline -->
+<section class="py-section-gap reveal" id="experience">
+<h2 class="font-headline-lg text-headline-lg mb-16 text-white">Trajetória <span class="premium-gradient-text">Profissional</span></h2>
+<div class="relative pl-12 space-y-12">
+<div class="absolute left-1 top-0 bottom-0 w-[1px] bg-gradient-to-b from-primary via-secondary to-transparent"></div>
+<div class="relative group">
+<div class="absolute -left-[54px] top-4 w-5 h-5 bg-primary rounded-full border-[6px] border-background shadow-[0_0_20px_rgba(0,242,255,0.6)] z-10"></div>
+<div class="glass-card p-10 rounded-[2rem]">
+<div class="flex flex-col md:flex-row md:justify-between items-start md:items-center mb-6 gap-2">
+<h3 class="text-2xl font-bold text-white">Freelance Developer &amp; UI Designer</h3>
+<span class="font-label-md text-xs px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">2023 - Presente</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Arquitetura de soluções web completas para startups internacionais. Foco em interfaces que convertem e sistemas backend resilientes.</p>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -left-[54px] top-4 w-5 h-5 bg-white/20 rounded-full border-[6px] border-background z-10"></div>
+<div class="glass-card p-10 rounded-[2rem]">
+<div class="flex flex-col md:flex-row md:justify-between items-start md:items-center mb-6 gap-2">
+<h3 class="text-2xl font-bold text-white">Estágio de Desenvolvimento</h3>
+<span class="font-label-md text-xs px-4 py-1.5 rounded-full bg-white/5 text-on-surface-variant border border-white/10">2022 - 2023</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Colaboração em sistemas de larga escala, otimização de bancos de dados relacionais e implementação de novos padrões de UI/UX em frameworks legados.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Education Section -->
+<section class="py-section-gap reveal">
+<h2 class="font-headline-lg text-headline-lg mb-16 text-white text-center">Formação &amp; <span class="premium-gradient-text">Especialização</span></h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-10 rounded-3xl border-t-2 border-t-primary">
+<div class="text-primary font-bold uppercase tracking-widest text-xs mb-4">SENAI</div>
+<h4 class="text-xl font-bold text-white mb-4">Técnico em Desenvolvimento de Sistemas</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Excelência em algoritmos, arquitetura de software e sistemas web industriais.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl border-t-2 border-t-secondary">
+<div class="text-secondary font-bold uppercase tracking-widest text-xs mb-4">Rocketseat</div>
+<h4 class="text-xl font-bold text-white mb-4">Full Stack Ignite</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Imersão avançada em ecossistemas Node.js, React e estratégias de performance.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl border-t-2 border-t-white/20">
+<div class="text-white/40 font-bold uppercase tracking-widest text-xs mb-4">FreeCodeCamp</div>
+<h4 class="text-xl font-bold text-white mb-4">Responsive Web Design</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Fundamentos de design inclusivo e acessibilidade web nível internacional.</p>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap reveal pb-24" id="contact">
+<div class="glass-card rounded-[3rem] p-16 grid lg:grid-cols-2 gap-24 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 blur-[100px] pointer-events-none"></div>
+<div>
+<p class="font-label-md text-primary tracking-[0.3em] uppercase text-xs mb-6">Entre em Contato</p>
+<h2 class="font-headline-lg text-display-lg mb-10 text-white">Vamos construir o <span class="premium-gradient-text">Próximo Nível</span>?</h2>
+<p class="font-body-lg text-on-surface-variant mb-12 opacity-80 leading-relaxed">
+                    Estou aberto a novas oportunidades de projetos premium e colaborações inovadoras. Sinta-se à vontade para enviar uma mensagem.
+                </p>
+<div class="space-y-8 mb-16">
+<div class="flex items-center gap-6 group cursor-pointer">
+<div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all">
+<span class="material-symbols-outlined">alternate_email</span>
+</div>
+<span class="text-on-surface-variant group-hover:text-white transition-colors">lima.ryan@email.com</span>
+</div>
+<div class="flex items-center gap-6 group cursor-pointer">
+<div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all">
+<span class="material-symbols-outlined">call</span>
+</div>
+<span class="text-on-surface-variant group-hover:text-white transition-colors">+55 (11) 98888-8888</span>
+</div>
+</div>
+<div class="flex gap-6">
+<a class="w-14 h-14 glass-card rounded-2xl flex items-center justify-center hover:bg-primary hover:text-black transition-all border-white/5" href="#">
+<span class="material-symbols-outlined">hub</span>
+</a>
+<a class="w-14 h-14 glass-card rounded-2xl flex items-center justify-center hover:bg-secondary hover:text-black transition-all border-white/5" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="w-14 h-14 glass-card rounded-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all border-white/5" href="#">
+<span class="material-symbols-outlined">chat</span>
+</a>
+</div>
+</div>
+<form class="space-y-8 p-10 bg-white/5 rounded-[2rem] border border-white/5">
+<div class="space-y-4">
+<label class="block font-label-md text-xs text-white/50 tracking-widest uppercase">Nome Completo</label>
+<input class="w-full bg-background/50 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-primary transition-all text-white placeholder:text-white/20" placeholder="Ex: Ryan Lima" type="text"/>
+</div>
+<div class="space-y-4">
+<label class="block font-label-md text-xs text-white/50 tracking-widest uppercase">E-mail</label>
+<input class="w-full bg-background/50 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-primary transition-all text-white placeholder:text-white/20" placeholder="seu@email.com" type="email"/>
+</div>
+<div class="space-y-4">
+<label class="block font-label-md text-xs text-white/50 tracking-widest uppercase">Mensagem</label>
+<textarea class="w-full bg-background/50 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-primary transition-all text-white placeholder:text-white/20 resize-none" placeholder="Conte-me sobre seu projeto..." rows="4"></textarea>
+</div>
+<button class="vibrant-btn w-full py-5 rounded-2xl font-bold uppercase tracking-widest text-black flex items-center justify-center gap-3">
+<span>Enviar Mensagem <span class="material-symbols-outlined align-middle">send</span></span>
+</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 bg-background border-t border-white/5">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="font-display-lg text-3xl font-bold tracking-tighter text-white">
+            RYAN<span class="text-primary">.</span>LIMA
+        </div>
+<div class="flex gap-12 font-label-md text-xs uppercase tracking-[0.2em] text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">GitHub</a>
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-primary transition-colors" href="#">Email</a>
+<a class="hover:text-primary transition-colors" href="#">Legal</a>
+</div>
+<div class="text-on-surface-variant text-xs opacity-40 font-mono">
+            © 2024. Designed by Ryan Lima. All rights reserved.
+        </div>
+</div>
+</footer>
+<script>
+    // Smooth Scroll Reveal
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal);
+
+    // Dynamic Navigation Highlighting
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => {
+                l.classList.remove('text-primary', 'nav-link-active');
+                l.classList.add('text-on-surface-variant', 'hover:text-white');
+            });
+            if (!this.classList.contains('px-8')) { // Ignore the button
+                this.classList.add('text-primary', 'nav-link-active');
+                this.classList.remove('text-on-surface-variant', 'hover:text-white');
+            }
+        });
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('py-4', 'bg-background/80');
+            nav.classList.remove('py-6', 'bg-background/50');
+        } else {
+            nav.classList.remove('py-4', 'bg-background/80');
+            nav.classList.add('py-6', 'bg-background/50');
+        }
+    });
+</script>
+</body></html>
